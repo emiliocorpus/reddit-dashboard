@@ -27,7 +27,6 @@ group :development, :test do
 	gem "guard-rspec"
 	gem 'httparty'
 	gem 'binding_of_caller'
-	gem "sqlite3"
 	gem "awesome_print", require: "ap"
 	gem "meta_request"
 		# for rails panel in chrome dev tools
