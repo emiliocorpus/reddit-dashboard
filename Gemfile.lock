@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jackdempsey/omniauth-reddit.git
+  revision: 4e54423f2d8a000e010998b53fa653adb7137baa
+  specs:
+    omniauth-reddit (0.0.2)
+      omniauth-oauth2 (~> 1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -308,8 +315,10 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   meta_request
+  oauth2
   omniauth
   omniauth-oauth2
+  omniauth-reddit!
   pg
   pry-rails
   quiet_assets
