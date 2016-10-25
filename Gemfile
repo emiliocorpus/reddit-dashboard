@@ -22,14 +22,13 @@ gem 'omniauth-reddit', :git => 'git://github.com/jackdempsey/omniauth-reddit.git
 gem 'foreman'
 gem 'turbolinks'
 gem 'font-awesome-sass', '~> 4.6.2'
-
+gem 'httparty'
 
 group :development, :test do
 	gem "rspec-rails"
 	gem "factory_girl_rails"
 	gem "capybara"
 	gem "guard-rspec"
-	gem 'httparty'
 	gem 'binding_of_caller'
 	gem "awesome_print", require: "ap"
 	gem "meta_request"
