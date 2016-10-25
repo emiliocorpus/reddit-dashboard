@@ -20,7 +20,7 @@
           <% if current_user %>
             <%= link_to 'Logout', destroy_user_session_path, :method=>:delete %>
           <% else %>
-            <%= link_to "Sign in with Reddit", omniauth_authorize_path(:user, :reddit) %>
+            <%= link_to "Sign in With Reddit", omniauth_authorize_path(:user, :reddit) %>
           <% end %>
         </li>
 
