@@ -274,5 +274,5 @@ Devise.setup do |config|
   #
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
-  config.omniauth :reddit, ENV['reddit_client_id'], ENV["reddit_client_secret"],scope: 'identity', redirect_uri: "http://localhost:3000/users/auth/reddit/callback"
+  config.omniauth :reddit, ENV['reddit_client_id'], ENV["reddit_client_secret"],scope: 'identity mysubreddits privatemessages read subscribe history account edit', redirect_uri: "http://localhost:3000/users/auth/reddit/callback"
 end
