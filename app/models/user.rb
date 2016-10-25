@@ -16,14 +16,13 @@ class User < ActiveRecord::Base
          user = User.new
          user.username = auth.info.name
          user.password = Devise.friendly_token[0,20]
-         user.save
        end
        identity.user = user
        identity.access_token = auth['credentials']['token']
        identity.expires_at = auth['credentials']['expires_at']
        identity.save
-       identity.user
     end
+    identity.user
   end
 
 
