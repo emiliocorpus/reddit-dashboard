@@ -1,8 +1,11 @@
-<h1>Hello from the Welcome Controller</h1>
+<h1>Greetings<%= current_user ? " #{current_user.username}!" : "!" %></h1>
 
 <% if current_user %>
 
-  HELLO LOGGED IN USER
   <%= link_to 'Logout', destroy_user_session_path, :method=>:delete %>
+
+<% else %>
+
+  <%= link_to "Sign in with Reddit", omniauth_authorize_path(:user, :reddit) %>
 
 <% end %>
