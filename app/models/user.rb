@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
      user
   end
 
+
+  #   headers = {"Authorization": "bearer #{token}"}
+  #   response = requests.get("https://oauth.reddit.com/api/v1/me", headers=headers)
+
   def email_required?
     false
   end

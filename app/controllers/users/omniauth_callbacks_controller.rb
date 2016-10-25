@@ -9,4 +9,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to root_path
     end
   end
+
+
+#   headers = {"Authorization": "bearer #{token_here}", "User-Agent": "RedditWebDashboard/0.1 by Emilio Corpus"}
+#   response = requests.get("https://oauth.reddit.com/api/v1/me", headers=headers)
+
+
 end
