@@ -6,27 +6,29 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
                   :recoverable, :rememberable, :trackable, :validatable,
               :omniauthable, :omniauth_providers => [:reddit]
+  has_many :identities, :dependent => :destroy
 
   validates_presence_of :username
 
   def self.from_omniauth(auth)
-     user = User.where(:provider => auth.provider, :username => auth.info.name, :uid => auth.uid)
-     binding.pry
-     unless user
-       binding.pry
-       user = User.create(
-                         provider:auth.provider,
-                         uid:auth.uid,
-                         username:auth.info.name,
-                         password:Devise.friendly_token[0,20]
-        )
-     end
-     user
+    identity = Identity.where(provider: auth.provider, uid: auth.uid).first_or_create do |identity|
+       if identity.user == nil
+         user = User.new
+         user.username = auth.info.name
+         user.password = Devise.friendly_token[0,20]
+         user.save
+       end
+       identity.user = user
+       identity.access_token = auth['credentials']['token']
+       identity.expires_at = auth['credentials']['expires_at']
+       identity.save
+       identity.user
+    end
   end
 
 
   #   headers = {"Authorization": "bearer #{token}", "User-Agent": "RedditWebDashboard/0.1 by Emilio Corpus"}
-  #   query = {:limit => 50, :count => #{NUMBER OF ITEMS YOU HAVE RETRIEVED}}, :after/before => ["name"] of the listing i.e. t3_g7aj2
+  #   query = {:limit => 50, :count => #{NUMBER OF ITEMS YOU HAVE RETRIEVED}}, :after/before => ["name"] of the listing i.e. t3_g7aj2 }
 
   #     THIS WILL GET THE FRONT PAGE OF WHICHEVER USER AUTHORIZES IT
   #   response = HTTParty.get("https://oauth.reddit.com/", :headers => headers, :query => query)

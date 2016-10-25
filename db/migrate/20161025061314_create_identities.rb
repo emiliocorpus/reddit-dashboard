@@ -6,6 +6,7 @@ class CreateIdentities < ActiveRecord::Migration
       t.string :access_token
       t.string :refresh_token
       t.integer :expires_at
+      t.references :user
 
       t.timestamps null: false
     end
